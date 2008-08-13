@@ -1,0 +1,27 @@
+SmartMonth is a "bodysnatcher" plugin that takes boring Date month fixnums and replaces them with a rich toolkit of functionality. You can use SmartMonth to:
+
+- Determine the first tuesday of any month in any year.
+- Determine all of the fridays of any month in any year.
+- Iterate through all the days of a month.
+- Determine how many days of the month there are.
+- Determine the first and last days of the month.
+- And other fun date/month related things!
+
+This is designed to be an extension of not only Time.now.month, but adds a new Month class to the ruby object model.
+
+Keep in mind, this is 1.0, and may break things that rely on Time.now.month being a Fixnum. I've tried to fix this by making sure #to_i works as expected, but it may be an issue, handle with care.
+
+Examples:
+
+	Time.now.month.every_tuesday #=> [array of tuesdays for the current month]
+	Month.april.first_wednesday #=> Date object corresponding to the first wednesday of april.
+	Month.may.every_monday_and_friday #=> {:monday=>[...],:friday=>[...]}
+	Month.june(2012).last_monday #=> Date object corresponding to the last monday in june 2012.
+	
+	# iterator:
+	Month.june(2004).each do |day|
+		day.to_s #=> name of day (Saturday, Sunday, etc.)
+		day.to_i #=> value between 1 and the last day of the month corresponding.
+	end
+
+Copyright (c) 2008 Panoctagon, inc (Derek Perez | www.derekperez.com), released under the MIT license
