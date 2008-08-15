@@ -28,7 +28,7 @@ module SmartMonth
         args = raw.select { |a| a != "and" }
         self.send(func,args)
       else
-        self.send(func,raw) if %w(first second third last).include? func
+        self.send(func,raw) if %w(first second third fourth last).include? func
       end
     end
   end
