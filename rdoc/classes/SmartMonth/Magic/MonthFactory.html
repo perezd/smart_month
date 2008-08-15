@@ -87,6 +87,7 @@ Month.june!
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
+      <a href="#M000005">[]</a>&nbsp;&nbsp;
       <a href="#M000004">method_missing</a>&nbsp;&nbsp;
       </div>
     </div>
@@ -108,6 +109,33 @@ Month.june!
     <!-- if method_list -->
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">[]</span><span class="method-args">(month)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+this allows you to essentially treat the month as a hash or array object to
+construct new months.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/smart_month/magic.rb, line 18</span>
+18:       <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">month</span>)
+19:          <span class="ruby-identifier">new</span>(<span class="ruby-identifier">month</span>)
+20:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
 
       <div id="method-M000004" class="method-detail">
         <a name="M000004"></a>
