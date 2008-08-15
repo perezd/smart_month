@@ -13,6 +13,11 @@ module SmartMonth
       def method_missing(meth,*args)
         return new(meth.to_s.capitalize, (args.first || Time.now.year)) if Month::NAMES.include? meth.to_s.capitalize
       end
+      
+      # this allows you to essentially treat the month as a hash or array object to construct new months.
+      def [](month)
+         new(month)
+      end
     end
     
     # nice catchall to allow rails-esque APIs if you choose to.

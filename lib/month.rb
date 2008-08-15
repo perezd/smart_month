@@ -14,6 +14,6 @@ class Month
   # constructor, takes 2 optional arguments, if you don't provide them, it will default to
   # the current month and year.
   def initialize(month = Time.now.mon, year = Time.now.year)
-    @date = Date.new(year,( month.is_a?(Integer) ? month : Month::NAMES.index(month.capitalize) ) ,1) 
+    @date = Date.new(year,( month.is_a?(Integer) ? month : Month::NAMES.index(month.to_s.capitalize) ) ,1) 
   end
 end

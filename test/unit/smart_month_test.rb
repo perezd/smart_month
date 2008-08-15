@@ -122,6 +122,17 @@ class SmartMonthTest < Test::Unit::TestCase
     assert_equal Month.june.every_tuesday_and_friday, Month.june.every(:tuesday,:friday)
   end
   
+  # Tested By: Derek Perez
+  def test_should_return_month_as_array_index
+    assert_equal Month[3], Month.march
+  end
+  
+  # Tested By: Derek Perez
+  def test_should_return_month_as_hash_key
+    assert_equal Month[:june], Month.june
+    assert_equal Month["april"], Month.april # alternate
+  end
+  
   # SmartMonth::Math
   
   # Tested By: Derek Perez
