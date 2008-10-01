@@ -25,5 +25,7 @@ module SmartMonth
     def to_i
       Month::NAMES.index(self.to_s)
     end
+    # add support for int as well.
+    alias :to_int :to_i
   end
 end
