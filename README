@@ -11,7 +11,7 @@ SmartMonth is a "bodysnatcher" plugin that takes boring Date month fixnums and r
 
 This is designed to be an extension of not only Time.now.month, but adds a new Month class to the ruby object model.
 
-Keep in mind, this is 1.0, and may break things that rely on Time.now.month being a Fixnum. I've tried to fix this by making sure #to_i works as expected, but it may be an issue, handle with care.
+Keep in mind, this is 1.1, and may break things that rely on Time.now.month being a Fixnum. I've tried to fix this by making sure #to_i works as expected, but it may be an issue, handle with care.
 
 Examples:
 
