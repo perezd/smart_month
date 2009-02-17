@@ -1,3 +1,5 @@
+NOTE: As of Feb 17th, 2009, This plugin no longer requires rails. I still have not converted it into a gem, if you are interested in helping out with that. Please get in touch!
+
 SmartMonth is a "bodysnatcher" plugin that takes boring Date month fixnums and replaces them with a rich toolkit of functionality. You can use SmartMonth to:
 
 - Determine the first tuesday of any month in any year.
