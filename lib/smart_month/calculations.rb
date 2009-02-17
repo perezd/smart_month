@@ -9,12 +9,12 @@ module SmartMonth
 
     # returns the second date of the day requested.
     def second(day)
-     nth_weekday(day,2)
+      nth_weekday(day,2)
     end
 
     # returns the third date of the day requested.
     def third(day)
-     nth_weekday(day,3)
+      nth_weekday(day,3)
     end
     
     # returns the fourth (or potentially last), date of the day requested.

@@ -1,5 +1,13 @@
 require 'date'
 
+$LOAD_PATH << File.dirname(__FILE__) + '/smart_month'
+
+require 'calculations'
+require 'collection'
+require 'math'
+require 'magic'
+require 'util'
+
 class Month
   # gather the modules
   include SmartMonth::Calculations

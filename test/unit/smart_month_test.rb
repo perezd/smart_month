@@ -1,5 +1,4 @@
 require "test/unit"
-require File.dirname(__FILE__) + '/../test_helper'
 require "date"
 
 class SmartMonthTest < Test::Unit::TestCase
@@ -27,7 +26,7 @@ class SmartMonthTest < Test::Unit::TestCase
   # Tested By: Derek Perez
   def test_should_return_last_day_of_month
     # test an ambiguous last, no weekday defined.
-    assert_equal Month.december.last, Date.new(2008,12,31)
+    assert_equal Month.december(2008).last, Date.new(2008,12,31)
     # test a specific last weekday.
     assert_equal Month.september(2004).last(:friday), Date.new(2004,9,24)
     # test a specific ambiguous, fourth, no weekday defined.

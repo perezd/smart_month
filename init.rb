@@ -1,3 +1,5 @@
+require 'lib/month'
+
 class ::Time
   def month
     return Month.new(self.mon,self.year)
