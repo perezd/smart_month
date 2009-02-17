@@ -28,7 +28,7 @@ Examples:
 		day.to_i #=> value between 1 and the last day of the month corresponding.
 	end
 
-Check the included documentation (rdoc) or our documentation site (http://code.panoctagon.com/projects/smartmonth) 
+Check the included documentation (rdoc) or our documentation site (http://www.derekperez.com/projects/smartmonth) 
 for more info on usage!
 
-Copyright (c) 2008 Panoctagon, inc (Derek Perez | www.derekperez.com), released under the MIT license
+Copyright (c) 2009 (Derek Perez | www.derekperez.com), released under the MIT license
