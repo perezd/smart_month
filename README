@@ -24,7 +24,7 @@ Examples:
 	
 	# iterator:
 	Month.june(2004).each do |day|
-		day.to_s #=> name of day (Saturday, Sunday, etc.)
+		day.to_day #=> name of day (Saturday, Sunday, etc.)
 		day.to_i #=> value between 1 and the last day of the month corresponding.
 	end
 
