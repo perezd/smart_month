@@ -1,4 +1,5 @@
 $LOAD_PATH << File.dirname(__FILE__) + '/smart_month'
+
 require 'calculations'
 require 'collection'
 require 'math'

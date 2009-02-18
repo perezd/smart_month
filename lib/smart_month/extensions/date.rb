@@ -18,6 +18,7 @@ module SmartMonth
       def to_day
         Month::DAYS[self.wday]
       end
+      
     end
   end
 end

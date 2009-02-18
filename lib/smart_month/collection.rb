@@ -41,7 +41,6 @@ module SmartMonth
     alias_method :prev!, :previous!
     
     # allows us to iterate internally on the days of a given month.
-    # It also uses the helpful Day class that provides some fun methods. (see SmartMonth::Collection::Day)
     def each(first = 1, last = self.last.day, &block)
      (1..self.last.day).each do |e|
        block.call(Date.new(@date.year,@date.month,e))
