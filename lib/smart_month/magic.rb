@@ -23,13 +23,49 @@ module SmartMonth
     # nice catchall to allow rails-esque APIs if you choose to.
     def method_missing(meth)
       raw = meth.to_s.split("_")
-      func = raw.slice!(0)
-      if func == "every"
-        args = raw.select { |a| a != "and" }
-        self.send(func,args)
+      
+      # execute lookup using week as positioning control
+      if week_position?(raw[0]) && raw[1] == "and"
+        results = []
+        # parse the request
+        arg = raw.slice!(raw.index(raw.last))
+        funcs = parse_arguments(raw)
+        # execute
+        funcs.each do |func|
+          results << self.send(func,arg) if week_position?(func)
+        end
+        return results
+        
+      # execute an every pattern on n-days
+      elsif raw[0] == "every"
+        # parse the request
+        func = raw.slice!(0)
+        args = parse_arguments(raw)
+        # execute
+        return self.every(args)
+        
+      # revert to basic singular lookup or raise an exception
+      elsif self.respond_to?(raw[0]) 
+        func = raw.slice!(0)
+        return self.send(func,raw) if week_position?(func)
       else
-        self.send(func,raw) if %w(first second third fourth last).include? func
+        raise NoMethodError
       end
     end
+  
+    private 
+    
+    # a quicky helper for breaking up text to args.
+    def parse_arguments(args)
+      args.select { |a| a != 'and' }
+    end
+    
+    # this is used a lot for validity and sanitizing.
+    def week_position?(compare)
+      [compare].flatten.each do |comp|
+        %w(first second third fourth last).include?(comp)
+      end
+    end
+    
   end
 end

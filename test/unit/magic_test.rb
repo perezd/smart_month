@@ -27,4 +27,11 @@ class MagicTest < Test::Unit::TestCase
     assert_equal Month["april"], Month.april # alternate
   end
   
+  # Tested By: Derek Perez
+  def test_should_return_days_week_control
+    assert_equal Month.march.first_and_third_tuesday, [Month.march.first(:tuesday), Month.march.third(:tuesday)]
+    assert_equal Month.march.first_and_last_friday, [Month.march.first(:friday), Month.march.last(:friday)]
+    assert_equal Month.march.first_and_second_last_friday, [Month.march.first(:friday), Month.march.second(:friday), Month.march.last(:friday)]
+  end
+  
 end
