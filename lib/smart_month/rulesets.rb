@@ -3,7 +3,7 @@ require 'yaml'
 module SmartMonth
   class Rulesets
     
-    def self.load(path)
+    def self.load_file(path)
       @@ruleset_yml = YAML::load(File.open(path))
     end
     
