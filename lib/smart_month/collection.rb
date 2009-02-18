@@ -1,21 +1,6 @@
 module SmartMonth
   # Responsible for all collection-based functionality.
   module Collection
-    # this is a helper class that is used primarily by Month#each.
-    # should not be used standalone for any reason, really.
-    class Day
-      def initialize(date)
-        @date = date
-      end
-      # returns the date numeric of the day (in regards to the month it resides in).
-      def to_i
-        @date.day
-      end
-      # returns the string value of the weekday.
-      def to_s
-        Month::DAYS[@date.wday]
-      end
-    end
     
     # allows for increment by copy
     def next
@@ -59,7 +44,7 @@ module SmartMonth
     # It also uses the helpful Day class that provides some fun methods. (see SmartMonth::Collection::Day)
     def each(first = 1, last = self.last.day, &block)
      (1..self.last.day).each do |e|
-       block.call(Day.new(Date.new(@date.year,@date.month,e)))
+       block.call(Date.new(@date.year,@date.month,e))
      end
      return self
     end

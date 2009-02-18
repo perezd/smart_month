@@ -33,7 +33,7 @@ class CollectionTest < Test::Unit::TestCase
     counter = 0
     Month.april(2009).each do |day|
       counter += 1
-      assert Month::DAYS.include?(day.to_s)
+      assert Month::DAYS.include?(day.to_day)
       assert (1..31).include?(day.to_i)
     end
     assert_equal counter, Month.april.size
