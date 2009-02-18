@@ -1,6 +1,7 @@
 module SmartMonth
   # Responsible for all math related functionality.
   module Math
+    
     # adds a number to the month value and returns a Fixnum.
     def +(int)
       self.to_i + int
@@ -35,5 +36,6 @@ module SmartMonth
     def ==(month)
       self.inspect! == month.inspect! 
     end
+    
   end
 end

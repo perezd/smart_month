@@ -12,6 +12,11 @@ Rake::TestTask.new do |test|
   test.verbose = true
 end
 
+desc 'Runs Ruby Standard Library tests for date and time.'
+task :ruby_test do 
+  puts `mspec test/spec`
+end
+
 desc 'Generate documentation for the smart_month plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
