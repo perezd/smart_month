@@ -13,7 +13,7 @@ Rake::TestTask.new do |test|
 end
 
 desc 'Runs Ruby Standard Library tests for date and time.'
-task :ruby_test do 
+task :test_ruby do 
   puts `mspec test/spec`
 end
 
