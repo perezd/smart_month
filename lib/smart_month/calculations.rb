@@ -53,6 +53,13 @@ module SmartMonth
      dates
     end
     
+    # this returns the same data as #every but removes the hash
+    # organization of the data.
+    def every!(*days)
+      days = every(days)
+      (days.is_a?(Array)) ? days : days.values.flatten
+    end
+    
     # returns the total number of days in month.
     def size
       self.last.day.to_i

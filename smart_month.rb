@@ -1,6 +1,6 @@
 require 'lib/month'
 
-# inject smartmonth into the Time class.
+# inject smart_month into the Time class.
 class ::Time
   def month
     return Month.new(self.mon,self.year)

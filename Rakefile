@@ -1,12 +1,15 @@
 require 'rake'
+require 'rake/testtask'
 require 'rake/rdoctask'
 
 desc 'Default: run unit tests.'
 task :default => :test
 
 desc 'Runs tiny test suite.'
-task :test do 
-  ruby 'test.rb'
+Rake::TestTask.new do |test|
+  test.libs << './test'
+  test.test_files = FileList['test/unit/*test.rb']
+  test.verbose = true
 end
 
 desc 'Generate documentation for the smart_month plugin.'

@@ -7,6 +7,7 @@ require 'collection'
 require 'math'
 require 'magic'
 require 'util'
+require 'rulesets'
 
 class Month
   # gather the modules
