@@ -165,14 +165,35 @@ nice catchall to allow rails-esque APIs if you choose to.
     <span class="ruby-comment cmt"># File lib/smart_month/magic.rb, line 24</span>
 24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>)
 25:       <span class="ruby-identifier">raw</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;_&quot;</span>)
-26:       <span class="ruby-identifier">func</span> = <span class="ruby-identifier">raw</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>)
-27:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">func</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;every&quot;</span>
-28:         <span class="ruby-identifier">args</span> = <span class="ruby-identifier">raw</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;and&quot;</span> }
-29:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">func</span>,<span class="ruby-identifier">args</span>)
-30:       <span class="ruby-keyword kw">else</span>
-31:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">func</span>,<span class="ruby-identifier">raw</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-node">%w(first second third fourth last)</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">func</span>
-32:       <span class="ruby-keyword kw">end</span>
-33:     <span class="ruby-keyword kw">end</span>
+26:       
+27:       <span class="ruby-comment cmt"># execute lookup using week as positioning control</span>
+28:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">week_position?</span>(<span class="ruby-identifier">raw</span>[<span class="ruby-value">0</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">raw</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;and&quot;</span>
+29:         <span class="ruby-identifier">results</span> = []
+30:         <span class="ruby-comment cmt"># parse the request</span>
+31:         <span class="ruby-identifier">arg</span> = <span class="ruby-identifier">raw</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-identifier">raw</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">raw</span>.<span class="ruby-identifier">last</span>))
+32:         <span class="ruby-identifier">funcs</span> = <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">raw</span>)
+33:         <span class="ruby-comment cmt"># execute</span>
+34:         <span class="ruby-identifier">funcs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">func</span><span class="ruby-operator">|</span>
+35:           <span class="ruby-identifier">results</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">func</span>,<span class="ruby-identifier">arg</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">week_position?</span>(<span class="ruby-identifier">func</span>)
+36:         <span class="ruby-keyword kw">end</span>
+37:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">results</span>
+38:         
+39:       <span class="ruby-comment cmt"># execute an every pattern on n-days</span>
+40:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">raw</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;every&quot;</span>
+41:         <span class="ruby-comment cmt"># parse the request</span>
+42:         <span class="ruby-identifier">func</span> = <span class="ruby-identifier">raw</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>)
+43:         <span class="ruby-identifier">args</span> = <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">raw</span>)
+44:         <span class="ruby-comment cmt"># execute</span>
+45:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">every</span>(<span class="ruby-identifier">args</span>)
+46:         
+47:       <span class="ruby-comment cmt"># revert to basic singular lookup or raise an exception</span>
+48:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">raw</span>[<span class="ruby-value">0</span>]) 
+49:         <span class="ruby-identifier">func</span> = <span class="ruby-identifier">raw</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>)
+50:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">func</span>,<span class="ruby-identifier">raw</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">week_position?</span>(<span class="ruby-identifier">func</span>)
+51:       <span class="ruby-keyword kw">else</span>
+52:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">NoMethodError</span>
+53:       <span class="ruby-keyword kw">end</span>
+54:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

@@ -87,11 +87,12 @@ Responsible for odds and ends.
 
       <div class="name-list">
       <a href="#M000006">inspect</a>&nbsp;&nbsp;
-      <a href="#M000008">inspect!</a>&nbsp;&nbsp;
-      <a href="#M000010">to_i</a>&nbsp;&nbsp;
-      <a href="#M000011">to_int</a>&nbsp;&nbsp;
-      <a href="#M000009">to_s</a>&nbsp;&nbsp;
-      <a href="#M000007">year</a>&nbsp;&nbsp;
+      <a href="#M000007">inspect!</a>&nbsp;&nbsp;
+      <a href="#M000012">month</a>&nbsp;&nbsp;
+      <a href="#M000009">to_i</a>&nbsp;&nbsp;
+      <a href="#M000010">to_int</a>&nbsp;&nbsp;
+      <a href="#M000008">to_s</a>&nbsp;&nbsp;
+      <a href="#M000011">year</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -124,7 +125,7 @@ Responsible for odds and ends.
       
         <div class="method-description">
           <p>
-returns the month as a string.
+returns the <a href="Util.html#M000012">month</a> as a string.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
@@ -139,27 +140,81 @@ returns the month as a string.
         </div>
       </div>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
 
         <div class="method-heading">
-          <a href="#M000008" class="method-signature">
+          <a href="#M000007" class="method-signature">
           <span class="method-name">inspect!</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns the month and the <a href="Util.html#M000007">year</a> as a string.
+returns the <a href="Util.html#M000012">month</a> and the <a
+href="Util.html#M000011">year</a> as a string.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000008-source">
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 15</span>
-15:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect!</span>
-16:       <span class="ruby-node">&quot;#{self.to_s} #{@date.year}&quot;</span>
-17:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 10</span>
+10:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect!</span>
+11:       <span class="ruby-node">&quot;#{self.to_s} #{self.year}&quot;</span>
+12:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">month</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns the <a href="Util.html#M000012">month</a> of the current <a
+href="Util.html#M000012">month</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 32</span>
+32:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">month</span>
+33:       <span class="ruby-ivar">@date</span>.<span class="ruby-identifier">month</span>
+34:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">to_i</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns the <a href="Util.html#M000012">month</a> as a fixnum.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 20</span>
+20:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_i</span>
+21:       <span class="ruby-constant">Month</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMES</span>.<span class="ruby-identifier">index</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>)
+22:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -169,23 +224,37 @@ returns the month and the <a href="Util.html#M000007">year</a> as a string.
         <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000010" class="method-signature">
-          <span class="method-name">to_i</span><span class="method-args">()</span>
+          <span class="method-name">to_int</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Util.html#M000009">to_i</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns the month as a fixnum.
+returns the <a href="Util.html#M000012">month</a> as a string.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000010-source">
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 25</span>
-25:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_i</span>
-26:       <span class="ruby-constant">Month</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMES</span>.<span class="ruby-identifier">index</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>)
-27:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 15</span>
+15:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+16:        <span class="ruby-constant">Month</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMES</span>[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">month</span>]
+17:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -195,63 +264,24 @@ returns the month as a fixnum.
         <a name="M000011"></a>
 
         <div class="method-heading">
-          <span class="method-name">to_int</span><span class="method-args">()</span>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Alias for <a href="Util.html#M000010">to_i</a>
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000009" class="method-detail">
-        <a name="M000009"></a>
-
-        <div class="method-heading">
-          <a href="#M000009" class="method-signature">
-          <span class="method-name">to_s</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-returns the month as a string.
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000009-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 20</span>
-20:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-21:        <span class="ruby-constant">Month</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMES</span>[<span class="ruby-ivar">@date</span>.<span class="ruby-identifier">month</span>]
-22:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000007" class="method-detail">
-        <a name="M000007"></a>
-
-        <div class="method-heading">
-          <a href="#M000007" class="method-signature">
+          <a href="#M000011" class="method-signature">
           <span class="method-name">year</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns the <a href="Util.html#M000007">year</a> of the current month.
+returns the <a href="Util.html#M000011">year</a> of the current <a
+href="Util.html#M000012">month</a>.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000007-source">
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 10</span>
-10:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">year</span>
-11:       <span class="ruby-ivar">@date</span>.<span class="ruby-identifier">year</span>
-12:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/smart_month/util.rb, line 27</span>
+27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">year</span>
+28:       <span class="ruby-ivar">@date</span>.<span class="ruby-identifier">year</span>
+29:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
