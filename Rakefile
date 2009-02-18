@@ -5,7 +5,7 @@ require 'rake/rdoctask'
 desc 'Default: run unit tests.'
 task :default => :test
 
-desc 'Runs tiny test suite.'
+desc 'Runs unit test suite.'
 Rake::TestTask.new do |test|
   test.libs << './test'
   test.test_files = FileList['test/unit/*test.rb']
