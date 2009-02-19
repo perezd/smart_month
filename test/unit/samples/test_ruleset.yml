@@ -1,15 +1,5 @@
 Christmas:
-    when: 'december 25th'
+    when: "December 25th"
     
-"Pay Day":
-    when: 'first and third thursday'
-
-"My Important Date":
-    when: 'june 12th, 2009'
-    
-"Another Event":
-    when: 'every tuesday'
-    
-    
-"March Meetings":
-    when: 'first and last friday in march'
+"My Meeting":
+    when: "June 16th, 2010"
