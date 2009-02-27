@@ -9,7 +9,7 @@ module SmartMonth
     end
     
     def self.load_file(path)
-      self.load_yaml(File.open(path))
+      File.open(path) { |yaml| self.load_yaml(yaml) }
     end
     
     def self.add_rule(name, rule)
