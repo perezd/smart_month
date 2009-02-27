@@ -16,7 +16,7 @@ module SmartMonth
       @@rulesets = {} unless defined? @@rulesets
       if rule.is_a?(String)
         @@rulesets.merge!( { name => {'when' => rule } } ) 
-        self.new.send(:activate_rules!)
+        self.new.send(:inject_rule,name,@@rulesets[name])
       end
     end
     
