@@ -1,6 +1,4 @@
-NOTE: As of Feb 17th, 2009, This plugin no longer requires rails. I still have not converted it into a gem, if you are interested in helping out with that. Please get in touch!
-
-OTHER NOTE: I've renamed the project repository to be more straightforward now, please update your things to the new correct name of "smart_month"
+NOTE: Please read the wiki for usage examples and to see how you can help our project!
 
 SmartMonth is a "bodysnatcher" plugin that takes boring Date month fixnums and replaces them with a rich toolkit of functionality. You can use SmartMonth to:
 
