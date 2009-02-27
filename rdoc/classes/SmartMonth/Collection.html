@@ -86,13 +86,13 @@ Responsible for all collection-based functionality.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000026">each</a>&nbsp;&nbsp;
-      <a href="#M000020">next</a>&nbsp;&nbsp;
-      <a href="#M000021">next!</a>&nbsp;&nbsp;
-      <a href="#M000023">prev</a>&nbsp;&nbsp;
-      <a href="#M000025">prev!</a>&nbsp;&nbsp;
-      <a href="#M000022">previous</a>&nbsp;&nbsp;
-      <a href="#M000024">previous!</a>&nbsp;&nbsp;
+      <a href="#M000029">each</a>&nbsp;&nbsp;
+      <a href="#M000023">next</a>&nbsp;&nbsp;
+      <a href="#M000024">next!</a>&nbsp;&nbsp;
+      <a href="#M000026">prev</a>&nbsp;&nbsp;
+      <a href="#M000028">prev!</a>&nbsp;&nbsp;
+      <a href="#M000025">previous</a>&nbsp;&nbsp;
+      <a href="#M000027">previous!</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -114,11 +114,11 @@ Responsible for all collection-based functionality.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000026" class="method-detail">
-        <a name="M000026"></a>
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
 
         <div class="method-heading">
-          <a href="#M000026" class="method-signature">
+          <a href="#M000029" class="method-signature">
           <span class="method-name">each</span><span class="method-args">(first = 1, last = self.last.day, &amp;block)</span>
           </a>
         </div>
@@ -128,8 +128,8 @@ Responsible for all collection-based functionality.
 allows us to iterate internally on the days of a given month.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000026-source">
+            onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000029-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/collection.rb, line 44</span>
 44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-identifier">first</span> = <span class="ruby-value">1</span>, <span class="ruby-identifier">last</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">day</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
@@ -143,11 +143,11 @@ allows us to iterate internally on the days of a given month.
         </div>
       </div>
 
-      <div id="method-M000020" class="method-detail">
-        <a name="M000020"></a>
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
 
         <div class="method-heading">
-          <a href="#M000020" class="method-signature">
+          <a href="#M000023" class="method-signature">
           <span class="method-name">next</span><span class="method-args">()</span>
           </a>
         </div>
@@ -157,8 +157,8 @@ allows us to iterate internally on the days of a given month.
 allows for increment by copy
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000020-source">
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/collection.rb, line 6</span>
  6:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">next</span>
@@ -173,11 +173,11 @@ allows for increment by copy
         </div>
       </div>
 
-      <div id="method-M000021" class="method-detail">
-        <a name="M000021"></a>
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
 
         <div class="method-heading">
-          <a href="#M000021" class="method-signature">
+          <a href="#M000024" class="method-signature">
           <span class="method-name">next!</span><span class="method-args">()</span>
           </a>
         </div>
@@ -187,8 +187,8 @@ allows for increment by copy
 allows for in place incrementing by 1
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000021-source">
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/collection.rb, line 15</span>
 15:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next!</span>
@@ -203,8 +203,8 @@ allows for in place incrementing by 1
         </div>
       </div>
 
-      <div id="method-M000023" class="method-detail">
-        <a name="M000023"></a>
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
 
         <div class="method-heading">
           <span class="method-name">prev</span><span class="method-args">()</span>
@@ -212,7 +212,21 @@ allows for in place incrementing by 1
       
         <div class="method-description">
           <p>
-Alias for <a href="Collection.html#M000022">previous</a>
+Alias for <a href="Collection.html#M000025">previous</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <span class="method-name">prev!</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Collection.html#M000025">previous</a>!
 </p>
         </div>
       </div>
@@ -221,21 +235,7 @@ Alias for <a href="Collection.html#M000022">previous</a>
         <a name="M000025"></a>
 
         <div class="method-heading">
-          <span class="method-name">prev!</span><span class="method-args">()</span>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Alias for <a href="Collection.html#M000022">previous</a>!
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000022" class="method-detail">
-        <a name="M000022"></a>
-
-        <div class="method-heading">
-          <a href="#M000022" class="method-signature">
+          <a href="#M000025" class="method-signature">
           <span class="method-name">previous</span><span class="method-args">()</span>
           </a>
         </div>
@@ -245,8 +245,8 @@ Alias for <a href="Collection.html#M000022">previous</a>!
 allows for deincrement by copy
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000022-source">
+            onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000025-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/collection.rb, line 24</span>
 24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">previous</span>
@@ -261,11 +261,11 @@ allows for deincrement by copy
         </div>
       </div>
 
-      <div id="method-M000024" class="method-detail">
-        <a name="M000024"></a>
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
 
         <div class="method-heading">
-          <a href="#M000024" class="method-signature">
+          <a href="#M000027" class="method-signature">
           <span class="method-name">previous!</span><span class="method-args">()</span>
           </a>
         </div>
@@ -275,8 +275,8 @@ allows for deincrement by copy
 allows for in place deincrementing by 1
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000024-source">
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/collection.rb, line 34</span>
 34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">previous!</span>

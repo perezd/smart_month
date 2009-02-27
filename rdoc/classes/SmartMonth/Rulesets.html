@@ -86,8 +86,13 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000039">load</a>&nbsp;&nbsp;
-      <a href="#M000040">parse_string_as_date</a>&nbsp;&nbsp;
+      <a href="#M000042">activate_rules!</a>&nbsp;&nbsp;
+      <a href="#M000041">add_rule</a>&nbsp;&nbsp;
+      <a href="#M000043">inject_rule</a>&nbsp;&nbsp;
+      <a href="#M000040">load_file</a>&nbsp;&nbsp;
+      <a href="#M000039">load_yaml</a>&nbsp;&nbsp;
+      <a href="#M000044">parse_string_as_date</a>&nbsp;&nbsp;
+      <a href="#M000045">parse_string_as_frequency</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -109,24 +114,27 @@
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000039" class="method-detail">
-        <a name="M000039"></a>
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
 
         <div class="method-heading">
-          <a href="#M000039" class="method-signature">
-          <span class="method-name">load</span><span class="method-args">(path)</span>
+          <a href="#M000041" class="method-signature">
+          <span class="method-name">add_rule</span><span class="method-args">(name, rule)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000039-source">
+            onclick="toggleCode('M000041-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000041-source">
 <pre>
-   <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 6</span>
-6:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">path</span>)
-7:       <span class="ruby-ivar">@@ruleset_yml</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>))
-8:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 15</span>
+15:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">add_rule</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">rule</span>)
+16:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rule</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+17:         <span class="ruby-ivar">@@rulesets</span>.<span class="ruby-identifier">merge!</span>( { <span class="ruby-identifier">name</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value str">'when'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rule</span> } } ) 
+18:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:activate_rules!</span>)
+19:       <span class="ruby-keyword kw">end</span>
+20:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -137,7 +145,7 @@
 
         <div class="method-heading">
           <a href="#M000040" class="method-signature">
-          <span class="method-name">parse_string_as_date</span><span class="method-args">(rule)</span>
+          <span class="method-name">load_file</span><span class="method-args">(path)</span>
           </a>
         </div>
       
@@ -146,13 +154,149 @@
             onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000040-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 10</span>
-10:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">parse_string_as_date</span>(<span class="ruby-identifier">rule</span>)
-11:       <span class="ruby-identifier">month</span>,<span class="ruby-identifier">day</span>,<span class="ruby-identifier">year</span> = <span class="ruby-identifier">rule</span>.<span class="ruby-identifier">split</span>
-12:       <span class="ruby-identifier">day</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-value str">','</span>,<span class="ruby-value str">''</span>)
-13:       <span class="ruby-identifier">day</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/st|rd|th|nd/</span>,<span class="ruby-value str">''</span>)
-14:       {<span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">year</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">month</span>, <span class="ruby-identifier">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">day</span>}
-15:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 11</span>
+11:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">path</span>)
+12:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load_yaml</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>))
+13:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="#M000039" class="method-signature">
+          <span class="method-name">load_yaml</span><span class="method-args">(yaml)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000039-source">
+<pre>
+   <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 6</span>
+6:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load_yaml</span>(<span class="ruby-identifier">yaml</span>)
+7:       <span class="ruby-ivar">@@rulesets</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">yaml</span>)
+8:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:activate_rules!</span>)
+9:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="#M000042" class="method-signature">
+          <span class="method-name">activate_rules!</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+iterates through all the rules currently defined in the class and injects
+them if they are not currently implemented.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000042-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000042-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 26</span>
+26:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">activate_rules!</span>
+27:       <span class="ruby-ivar">@@rulesets</span>.<span class="ruby-identifier">each_key</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rule</span><span class="ruby-operator">|</span>
+28:         <span class="ruby-identifier">inject_rule</span>(<span class="ruby-identifier">rule</span>, <span class="ruby-ivar">@@rulesets</span>[<span class="ruby-identifier">rule</span>]) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Month</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">rule</span>)
+29:       <span class="ruby-keyword kw">end</span>
+30:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="#M000043" class="method-signature">
+          <span class="method-name">inject_rule</span><span class="method-args">(name,rule)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+this method parses and defines the methods in our pre-existing ruby classes
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000043-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000043-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 33</span>
+33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inject_rule</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">rule</span>)
+34:       <span class="ruby-identifier">meth_name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">' '</span>,<span class="ruby-value str">'_'</span>).<span class="ruby-identifier">downcase</span>
+35:       <span class="ruby-identifier">type</span>, <span class="ruby-identifier">data</span> = <span class="ruby-identifier">parse_string_as_date</span>(<span class="ruby-identifier">rule</span>) <span class="ruby-comment cmt"># ||= parse_string_as_frequency(rule)</span>
+36:       <span class="ruby-comment cmt"># don't define the rulset methods if they might override existing methods!</span>
+37:       <span class="ruby-identifier">define_methods</span>(<span class="ruby-identifier">type</span>,<span class="ruby-identifier">meth_name</span>,<span class="ruby-identifier">data</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Month</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">meth_name</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">meth_name</span>)
+38:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="#M000044" class="method-signature">
+          <span class="method-name">parse_string_as_date</span><span class="method-args">(rule)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+this is the parsing process for basic &quot;date as string&quot; rules (eg:
+&#8216;December 12th, 2005&#8217; or &#8216;March 15th&#8217;)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000044-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_string_as_date</span>(<span class="ruby-identifier">rule</span>)
+45:       <span class="ruby-comment cmt"># first attempt to parse the string and load structure</span>
+46:       <span class="ruby-identifier">month</span>,<span class="ruby-identifier">day</span>,<span class="ruby-identifier">year</span> = <span class="ruby-identifier">rule</span>[<span class="ruby-value str">'when'</span>].<span class="ruby-identifier">split</span>
+47:       <span class="ruby-identifier">year</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">year</span>.<span class="ruby-identifier">nil?</span>
+48:       <span class="ruby-identifier">data</span> = {<span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Month</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">month</span>).<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span>}
+49:       <span class="ruby-keyword kw">return</span> [<span class="ruby-identifier">:date</span>,<span class="ruby-identifier">data</span>]
+50:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="#M000045" class="method-signature">
+          <span class="method-name">parse_string_as_frequency</span><span class="method-args">(rule)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000045-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/smart_month/rulesets.rb, line 52</span>
+52:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_string_as_frequency</span>(<span class="ruby-identifier">rule</span>)
+53:       <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;not defined!&quot;</span>
+54:       <span class="ruby-comment cmt"># return [:freq, data]</span>
+55:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

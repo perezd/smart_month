@@ -37,6 +37,8 @@ module SmartMonth
       define_methods(type,meth_name,data) unless Month.respond_to?(meth_name) && Date.respond_to?(meth_name)
     end
     
+    ## Parser strategies
+    
     # this is the parsing process for basic "date as string" rules
     # (eg: 'December 12th, 2005' or 'March 15th')
     def parse_string_as_date(rule)
@@ -51,6 +53,9 @@ module SmartMonth
       raise "not defined!"
       # return [:freq, data]
     end    
+    
+    ## The folowing methods are used to alter the existing objects in memory
+    # through the use of meta-programming. 
     
     private
     
