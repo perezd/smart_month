@@ -71,7 +71,6 @@ class CalculationsTest < Test::Unit::TestCase
      # check for data integrity
      assert_equal assertion.size, 9
      assert_equal assertion, [Date.new(2006,8,2),Date.new(2006,8,9),Date.new(2006,8,16),Date.new(2006,8,23),Date.new(2006,8,30),Date.new(2006,8,7),Date.new(2006,8,14),Date.new(2006,8,21),Date.new(2006,8,28)]
-
    end
 
    # Tested By: Derek Perez

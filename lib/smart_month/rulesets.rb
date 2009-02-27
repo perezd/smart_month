@@ -61,6 +61,7 @@ module SmartMonth
     
     # define root definition for lookup directly into the Month class
     def define_root(type,meth_name,data)
+      return false unless [:date,:freq].include?(type)
       begin
         # algorithm template
         context = "(self.month == #{data[:month]})"

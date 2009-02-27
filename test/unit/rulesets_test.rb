@@ -35,5 +35,10 @@ class RulesetsTest < Test::Unit::TestCase
   def test_should_not_apply_previously_defined_rules
   end
   
+  def test_should_not_apply_alias_if_root_undefined
+  end
+  
+  
+  
   
 end
