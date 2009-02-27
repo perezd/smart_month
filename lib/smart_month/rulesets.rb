@@ -62,17 +62,17 @@ module SmartMonth
     # define root definition for lookup directly into the Month class
     def define_root(type,meth_name,data)
       begin
+        # algorithm template
+        origin = "(self.month == #{data[:month]})"
+        fail = 'nil'
+        # determine lookup based on requested strategy
+        case type
+          when :date: qry = "Date.new(#{data[:year]},#{data[:month]},#{data[:day]})"
+          when :freq: qry = 'true'
+          else qry = 'nil'
+        end
+        # evaluate the custom rule into the function
         Month.send(:define_method,meth_name) {
-          # algorithm template
-          origin = "(self.month == #{data[:month]})"
-          fail = 'nil'
-          # determine lookup based on requested strategy
-          case type
-            when :date: qry = "Date.new(#{data[:year]},#{data[:month]},#{data[:day]})"
-            when :freq: qry = 'true'
-            else qry = 'nil'
-          end
-          # evaluate the custom rule into the function
           eval "#{origin} ? #{qry} : #{fail}"
         }
       rescue
