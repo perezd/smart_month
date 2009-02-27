@@ -46,7 +46,7 @@ module SmartMonth
       data = {:year => year.to_i, :month => Month.new(month).to_i, :day => day.to_i}
       return [:date,data]
     end
-    
+
     def parse_string_as_frequency(rule)
       raise "not defined!"
       # return [:freq, data]
@@ -63,7 +63,7 @@ module SmartMonth
     def define_root(type,meth_name,data)
       begin
         # algorithm template
-        origin = "(self.month == #{data[:month]})"
+        context = "(self.month == #{data[:month]})"
         fail = 'nil'
         # determine lookup based on requested strategy
         case type
@@ -73,7 +73,7 @@ module SmartMonth
         end
         # evaluate the custom rule into the function
         Month.send(:define_method,meth_name) {
-          eval "#{origin} ? #{qry} : #{fail}"
+          eval "#{context} ? #{qry} : #{fail}"
         }
       rescue
         false

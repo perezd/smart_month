@@ -31,7 +31,7 @@ module SmartMonth
     # returns an array of dates of the day requested.
     # if an array of dates are passed in, a hash of day names containing
     # the corresponding date are returned.
-    def every(*days)
+    def every!(*days)
      days = [days].flatten
      if days.size == 1
        dates = []
@@ -53,10 +53,10 @@ module SmartMonth
      dates
     end
     
-    # this returns the same data as #every but removes the hash
+    # this returns the same data as #every! but removes the hash
     # organization of the data.
-    def every!(*days)
-      days = every(days)
+    def every(*days)
+      days = every!(days)
       (days.is_a?(Array)) ? days : days.values.flatten
     end
     

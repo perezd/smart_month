@@ -44,7 +44,7 @@ class CalculationsTest < Test::Unit::TestCase
 
    # Tested By: Derek Perez
    def test_should_retun_every_set_of_days_of_month
-     assertion = Month.august(2006).every(:monday,:wednesday)
+     assertion = Month.august(2006).every!(:monday,:wednesday)
      # verify
      assert assertion.is_a?(Hash)
      # monday assertions
@@ -58,19 +58,19 @@ class CalculationsTest < Test::Unit::TestCase
    
    # Tested By: Derek Perez
    def test_should_return_every_day_of_month_as_array
-     assertion = Month.april(2003).every!(:tuesday)
+     assertion = Month.april(2003).every(:tuesday)
      assert_equal assertion.size, 5
      assert_equal assertion, [Date.new(2003,4,1),Date.new(2003,4,8),Date.new(2003,4,15),Date.new(2003,4,22),Date.new(2003,4,29)]
    end
 
    # Tested By: Derek Perez
    def test_should_retun_every_set_of_days_of_month_as_array
-     assertion = Month.august(2006).every!(:monday,:wednesday)
+     assertion = Month.august(2006).every(:monday,:wednesday)
      # verify
      assert assertion.is_a?(Array)
      # check for data integrity
      assert_equal assertion.size, 9
-     assert_equal assertion, [Date.new(2006,8,7),Date.new(2006,8,14),Date.new(2006,8,21),Date.new(2006,8,28),Date.new(2006,8,2),Date.new(2006,8,9),Date.new(2006,8,16),Date.new(2006,8,23),Date.new(2006,8,30)]
+     assert_equal assertion, [Date.new(2006,8,2),Date.new(2006,8,9),Date.new(2006,8,16),Date.new(2006,8,23),Date.new(2006,8,30),Date.new(2006,8,7),Date.new(2006,8,14),Date.new(2006,8,21),Date.new(2006,8,28)]
 
    end
 
