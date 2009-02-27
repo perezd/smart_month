@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RulesetsTest < Test::Unit::TestCase
   
-  # load up the test yaml file
+  # load up the test ruleset yaml file
   def setup
     SmartMonth::Rulesets.load_file(File.dirname(__FILE__)+'/samples/test_ruleset.yml')
   end

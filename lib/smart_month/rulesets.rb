@@ -3,27 +3,44 @@ require 'yaml'
 module SmartMonth
   class Rulesets
     
+    ## LOADING RULES FROM YAML STREAM OR YAML FILE
+    
+    # this allows importing of rules into the system as
+    # a raw yaml stream
     def self.load_yaml(yaml)
       @@rulesets = YAML::load(yaml)
       self.new.send(:activate_rules!)
     end
     
+    # this allows import of rules into the system as
+    # a yaml file on disk
     def self.load_file(path)
       File.open(path) { |yaml| self.load_yaml(yaml) }
     end
     
-    def self.add_rule(name, rule)
+    ## MANUAL RULE MANAGEMENT
+    
+    
+    # manually add a rule to the system. The rule argument should be a string,
+    # an optional year argument can be passed if using a "natural frequency"
+    def self.add_rule(name, rule, year = nil)
       @@rulesets = {} unless defined? @@rulesets
       if rule.is_a?(String)
-        @@rulesets.merge!( { name => {'when' => rule } } ) 
+        # define rule
+        rule_hash = { name => {'when' => rule } }
+        rule_hash[name]['year'] = year unless year.nil? 
+        # merge and inject
+        @@rulesets.merge!(rule_hash) 
         self.new.send(:inject_rule,name,@@rulesets[name])
       end
     end
     
-    def self.update_rule(name, rule)
-      self.add_rule(name, rule)
+    # updating and adding rules should do the same thing
+    class << self
+      alias_method :update_rule, :add_rule
     end
     
+    # manually remove an existing rule from the system.
     def self.remove_rule(name)
       raise "not defined!"
     end
@@ -41,7 +58,7 @@ module SmartMonth
     # this method parses and defines the methods in our pre-existing ruby classes
     def inject_rule(name,rule)
       meth_name = name.gsub(' ','_').downcase
-      type, data = parse_string_as_date(rule) # ||= parse_string_as_frequency(rule)
+      type, data = parse(rule)
       # don't define the rulset methods if they might override existing methods!
       define_methods(type,meth_name,data) unless Month.respond_to?(meth_name) && Date.respond_to?(meth_name)
     end
