@@ -13,10 +13,19 @@ module SmartMonth
     end
     
     def self.add_rule(name, rule)
+      @@rulesets = {} unless defined? @@rulesets
       if rule.is_a?(String)
         @@rulesets.merge!( { name => {'when' => rule } } ) 
         self.new.send(:activate_rules!)
       end
+    end
+    
+    def self.update_rule(name, rule)
+      self.add_rule(name, rule)
+    end
+    
+    def self.remove_rule(name)
+      raise "not defined!"
     end
   
     protected 
@@ -25,7 +34,7 @@ module SmartMonth
     # if they are not currently implemented.
     def activate_rules!
       @@rulesets.each_key do |rule|
-        inject_rule(rule, @@rulesets[rule]) unless Month.respond_to?(rule)
+        inject_rule(rule, @@rulesets[rule])
       end
     end
     
@@ -39,6 +48,12 @@ module SmartMonth
     
     ## Parser strategies
     
+    # factory method for determing which parsing strategy to use based on the rule.
+    def parse(rule)
+      (Month::NAMES.include?(rule['when'].split[0].capitalize)) ? parse_string_as_date(rule) : parse_string_as_frequency(rule)
+    end
+    
+    
     # this is the parsing process for basic "date as string" rules
     # (eg: 'December 12th, 2005' or 'March 15th')
     def parse_string_as_date(rule)
@@ -48,10 +63,17 @@ module SmartMonth
       data = {:year => year.to_i, :month => Month.new(month).to_i, :day => day.to_i}
       return [:date,data]
     end
-
+    
+    # this is the parsing process for basic "date as frequency" rules
+    # (eg: 'every tuesday and saturday' or 'every monday in march and april')
     def parse_string_as_frequency(rule)
-      raise "not defined!"
-      # return [:freq, data]
+      data,context = rule['when'].split('in')
+      data = data.rstrip.gsub(' ','_').downcase unless data.nil?
+      unless context.nil?
+        context = context.gsub(/(\,|and)/,'').split
+        context.collect {|ctx| ctx.downcase }
+      end
+      return [:freq, data, context, rule['year'].to_i]
     end    
     
     ## The folowing methods are used to alter the existing objects in memory
