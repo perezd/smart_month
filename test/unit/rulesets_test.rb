@@ -79,11 +79,16 @@ class RulesetsTest < Test::Unit::TestCase
   def test_should_not_apply_alias_if_root_undefined
   end
   
-  
+  # tested by: Derek Perez
   def test_should_not_remove_undefined_rule
+    assert !SmartMonth::Rulesets.remove_rule("Rule fake")
   end
   
-  
+  # tested by: Derek Perez
   def test_should_remove_defined_rule
+    assert SmartMonth::Rulesets.remove_rule("Christmas")
+    assert !Month.december.respond_to?(:christmas)
+    assert !Month.december.first.respond_to?(:is_christmas?)
   end
+  
 end

@@ -42,13 +42,14 @@ module SmartMonth
     # manually remove an existing rule from the system.
     def self.remove_rule(name)
       begin
-        @@rulesets.delete(name)
-        Date.send(:undef, "is_#{name}?")
-        Month.send(:undef, "#{name}")
+        name = name.gsub(' ','_').downcase
+        @@rulesets.delete_if { |k,v| k.downcase == name }
+        Date.class_eval  { eval("undef is_#{name}?") }
+        Month.class_eval { eval("undef #{name}")}
       rescue
-        false
+       return false
       end
-      true
+      return true
     end
   
     protected 
@@ -116,7 +117,7 @@ module SmartMonth
       return false unless [:date,:freq].include?(type)
       begin
         # algorithm template
-        context = "(self.month == #{data[:month]})"
+        context = "([#{data[:month]}].flatten.include?(self.month))"
         fail = 'nil'
         # determine lookup based on requested strategy
         case type
@@ -129,9 +130,9 @@ module SmartMonth
           eval "#{context} ? #{qry} : #{fail}"
         }
       rescue
-        false
+        return false
       end
-      true
+      return true
     end
     
     # alias root definition as boolean directly into the Date class
@@ -141,9 +142,9 @@ module SmartMonth
           [Month[data[:month]].send(meth_name)].flatten.include?(self)
         }
       rescue
-        false
+        return false
       end
-      true
+      return true
     end
     
   end
