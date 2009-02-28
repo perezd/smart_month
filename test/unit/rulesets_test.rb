@@ -79,4 +79,11 @@ class RulesetsTest < Test::Unit::TestCase
   def test_should_not_apply_alias_if_root_undefined
   end
   
+  
+  def test_should_not_remove_undefined_rule
+  end
+  
+  
+  def test_should_remove_defined_rule
+  end
 end

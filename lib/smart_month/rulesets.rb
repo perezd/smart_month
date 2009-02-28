@@ -20,7 +20,6 @@ module SmartMonth
     
     ## MANUAL RULE MANAGEMENT
     
-    
     # manually add a rule to the system. The rule argument should be a string,
     # an optional year argument can be passed if using a "natural frequency"
     def self.add_rule(name, rule, year = nil)
@@ -42,7 +41,14 @@ module SmartMonth
     
     # manually remove an existing rule from the system.
     def self.remove_rule(name)
-      raise "not defined!"
+      begin
+        @@rulesets.delete(name)
+        Date.send(:undef, "is_#{name}?")
+        Month.send(:undef, "#{name}")
+      rescue
+        false
+      end
+      true
     end
   
     protected 
@@ -60,10 +66,10 @@ module SmartMonth
       meth_name = name.gsub(' ','_').downcase
       type, data = parse(rule)
       # don't define the rulset methods if they might override existing methods!
-      define_methods(type,meth_name,data) unless Month.respond_to?(meth_name) && Date.respond_to?(meth_name)
+      define_methods(type,meth_name,data) unless Month.respond_to?(meth_name) || Date.respond_to?(meth_name)
     end
     
-    ## Parser strategies
+    ## PARSER STRATEGIES
     
     # factory method for determing which parsing strategy to use based on the rule.
     def parse(rule)
@@ -92,6 +98,8 @@ module SmartMonth
       end
       return [:freq, data, context, rule['year'].to_i]
     end    
+    
+    ## METHOD DEFINITION
     
     ## The folowing methods are used to alter the existing objects in memory
     # through the use of meta-programming. 
@@ -137,6 +145,6 @@ module SmartMonth
       end
       true
     end
-  
+    
   end
 end
