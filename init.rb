@@ -1,2 +1,2 @@
-# for historical reasons, and use as a rails plugin.
-require 'smart_month'
+# for historical reasons, you may need to uncomment this.
+# require 'smart_month'
