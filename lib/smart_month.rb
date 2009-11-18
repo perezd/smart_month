@@ -1,5 +1,5 @@
 require 'date'
-require 'lib/month'
+require 'month'
 require 'extensions/date'
 
 # inject smart_month system into the Time class.
