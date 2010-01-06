@@ -1,6 +1,8 @@
 NOTE: Please read the wiki for usage examples and to see how you can help our project!
 
-SmartMonth is a "bodysnatcher" plugin that takes boring Date month fixnums and replaces them with a rich toolkit of functionality. You can use SmartMonth to:
+Big Thanks to JSilver for turning this project into a gem on gemcutter! http://gemcutter.org/gems/smart_month
+
+SmartMonth is a "bodysnatcher" gem that takes boring Date month fixnums and replaces them with a rich toolkit of functionality. You can use SmartMonth to:
 
 - Determine the first tuesday of any month in any year.
 - Determine all of the fridays of any month in any year.
