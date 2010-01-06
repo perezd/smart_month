@@ -19,7 +19,7 @@ Examples:
 	Month.april.first_wednesday #=> Date object corresponding to the first wednesday of april.
 	Month.may.every_monday_and_friday #=> {:monday=>[...],:friday=>[...]}
 	Month.june(2012).last_monday #=> Date object corresponding to the last monday in june 2012.
-	
+
 	# iterator:
 	Month.june(2004).each do |day|
 		day.to_day #=> name of day (Saturday, Sunday, etc.)
@@ -30,3 +30,4 @@ Check the included documentation (rdoc) or the documentation site http://www.der
 for more info on usage!
 
 Copyright (c) 2009 (Derek Perez | www.derekperez.com), released under the MIT license
+

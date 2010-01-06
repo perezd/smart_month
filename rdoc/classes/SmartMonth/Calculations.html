@@ -86,15 +86,15 @@ Responsible for all core month/week calculations.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000036">every</a>&nbsp;&nbsp;
-      <a href="#M000035">every!</a>&nbsp;&nbsp;
-      <a href="#M000030">first</a>&nbsp;&nbsp;
-      <a href="#M000033">fourth</a>&nbsp;&nbsp;
-      <a href="#M000034">last</a>&nbsp;&nbsp;
-      <a href="#M000038">length</a>&nbsp;&nbsp;
-      <a href="#M000031">second</a>&nbsp;&nbsp;
-      <a href="#M000037">size</a>&nbsp;&nbsp;
-      <a href="#M000032">third</a>&nbsp;&nbsp;
+      <a href="#M000030">every</a>&nbsp;&nbsp;
+      <a href="#M000029">every!</a>&nbsp;&nbsp;
+      <a href="#M000024">first</a>&nbsp;&nbsp;
+      <a href="#M000027">fourth</a>&nbsp;&nbsp;
+      <a href="#M000028">last</a>&nbsp;&nbsp;
+      <a href="#M000032">length</a>&nbsp;&nbsp;
+      <a href="#M000025">second</a>&nbsp;&nbsp;
+      <a href="#M000031">size</a>&nbsp;&nbsp;
+      <a href="#M000026">third</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -116,11 +116,11 @@ Responsible for all core month/week calculations.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000036" class="method-detail">
-        <a name="M000036"></a>
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
 
         <div class="method-heading">
-          <a href="#M000036" class="method-signature">
+          <a href="#M000030" class="method-signature">
           <span class="method-name">every</span><span class="method-args">(*days)</span>
           </a>
         </div>
@@ -128,12 +128,12 @@ Responsible for all core month/week calculations.
         <div class="method-description">
           <p>
 this returns the same data as <a
-href="Calculations.html#M000036">every</a>! but removes the hash
+href="Calculations.html#M000030">every</a>! but removes the hash
 organization of the data.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000036-source">
+            onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000030-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 58</span>
 58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">every</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">days</span>)
@@ -145,11 +145,11 @@ organization of the data.
         </div>
       </div>
 
-      <div id="method-M000035" class="method-detail">
-        <a name="M000035"></a>
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
 
         <div class="method-heading">
-          <a href="#M000035" class="method-signature">
+          <a href="#M000029" class="method-signature">
           <span class="method-name">every!</span><span class="method-args">(*days)</span>
           </a>
         </div>
@@ -161,8 +161,8 @@ passed in, a hash of day names containing the corresponding date are
 returned.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000035-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000035-source">
+            onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000029-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 34</span>
 34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">every!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">days</span>)
@@ -191,24 +191,24 @@ returned.
         </div>
       </div>
 
-      <div id="method-M000030" class="method-detail">
-        <a name="M000030"></a>
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
 
         <div class="method-heading">
-          <a href="#M000030" class="method-signature">
+          <a href="#M000024" class="method-signature">
           <span class="method-name">first</span><span class="method-args">(day = nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns the <a href="Calculations.html#M000030">first</a> date of the day
+returns the <a href="Calculations.html#M000024">first</a> date of the day
 requested. if no day is defined, it returns the very <a
-href="Calculations.html#M000030">first</a> day of the month.
+href="Calculations.html#M000024">first</a> day of the month.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000030-source">
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
 <pre>
    <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 6</span>
 6:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>(<span class="ruby-identifier">day</span> = <span class="ruby-keyword kw">nil</span>)
@@ -219,23 +219,23 @@ href="Calculations.html#M000030">first</a> day of the month.
         </div>
       </div>
 
-      <div id="method-M000033" class="method-detail">
-        <a name="M000033"></a>
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
 
         <div class="method-heading">
-          <a href="#M000033" class="method-signature">
+          <a href="#M000027" class="method-signature">
           <span class="method-name">fourth</span><span class="method-args">(day)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns the <a href="Calculations.html#M000033">fourth</a> (or potentially
-<a href="Calculations.html#M000034">last</a>), date of the day requested.
+returns the <a href="Calculations.html#M000027">fourth</a> (or potentially
+<a href="Calculations.html#M000028">last</a>), date of the day requested.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000033-source">
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 21</span>
 21:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fourth</span>(<span class="ruby-identifier">day</span>)
@@ -246,24 +246,24 @@ returns the <a href="Calculations.html#M000033">fourth</a> (or potentially
         </div>
       </div>
 
-      <div id="method-M000034" class="method-detail">
-        <a name="M000034"></a>
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
 
         <div class="method-heading">
-          <a href="#M000034" class="method-signature">
+          <a href="#M000028" class="method-signature">
           <span class="method-name">last</span><span class="method-args">(day = nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns <a href="Calculations.html#M000034">last</a> date of the day
+returns <a href="Calculations.html#M000028">last</a> date of the day
 requested. if no day is defined, it returns the very <a
-href="Calculations.html#M000034">last</a> day of the month.
+href="Calculations.html#M000028">last</a> day of the month.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000034-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000034-source">
+            onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000028-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 27</span>
 27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last</span>(<span class="ruby-identifier">day</span> = <span class="ruby-keyword kw">nil</span>)
@@ -274,8 +274,8 @@ href="Calculations.html#M000034">last</a> day of the month.
         </div>
       </div>
 
-      <div id="method-M000038" class="method-detail">
-        <a name="M000038"></a>
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
 
         <div class="method-heading">
           <span class="method-name">length</span><span class="method-args">()</span>
@@ -283,28 +283,28 @@ href="Calculations.html#M000034">last</a> day of the month.
       
         <div class="method-description">
           <p>
-Alias for <a href="Calculations.html#M000037">size</a>
+Alias for <a href="Calculations.html#M000031">size</a>
 </p>
         </div>
       </div>
 
-      <div id="method-M000031" class="method-detail">
-        <a name="M000031"></a>
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
 
         <div class="method-heading">
-          <a href="#M000031" class="method-signature">
+          <a href="#M000025" class="method-signature">
           <span class="method-name">second</span><span class="method-args">(day)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns the <a href="Calculations.html#M000031">second</a> date of the day
+returns the <a href="Calculations.html#M000025">second</a> date of the day
 requested.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000031-source">
+            onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000025-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 11</span>
 11:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">second</span>(<span class="ruby-identifier">day</span>)
@@ -315,11 +315,11 @@ requested.
         </div>
       </div>
 
-      <div id="method-M000037" class="method-detail">
-        <a name="M000037"></a>
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
 
         <div class="method-heading">
-          <a href="#M000037" class="method-signature">
+          <a href="#M000031" class="method-signature">
           <span class="method-name">size</span><span class="method-args">()</span>
           </a>
         </div>
@@ -329,8 +329,8 @@ requested.
 returns the total number of days in month.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000037-source">
+            onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000031-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 64</span>
 64:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
@@ -341,23 +341,23 @@ returns the total number of days in month.
         </div>
       </div>
 
-      <div id="method-M000032" class="method-detail">
-        <a name="M000032"></a>
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
 
         <div class="method-heading">
-          <a href="#M000032" class="method-signature">
+          <a href="#M000026" class="method-signature">
           <span class="method-name">third</span><span class="method-args">(day)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-returns the <a href="Calculations.html#M000032">third</a> date of the day
+returns the <a href="Calculations.html#M000026">third</a> date of the day
 requested.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000032-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000032-source">
+            onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000026-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/smart_month/calculations.rb, line 16</span>
 16:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">third</span>(<span class="ruby-identifier">day</span>)

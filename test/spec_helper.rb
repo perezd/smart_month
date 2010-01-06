@@ -1,6 +1,6 @@
 # quickly load smart month into the test spec
 $LOAD_PATH << File.dirname(__FILE__) + '/../'
-require 'smart_month'
+require 'lib/smart_month'
 
 unless ENV['MSPEC_RUNNER']
   begin
@@ -16,7 +16,7 @@ unless ENV['MSPEC_RUNNER']
     require 'mspec/matchers/equal_element'
     require 'mspec/matchers/equal_utf16'
     require 'mspec/matchers/match_yaml'
-    
+
 
 
     # Code to setup HOME directory correctly on Windows
@@ -53,3 +53,4 @@ unless MSpec::VERSION >= minimum_version
 end
 
 $VERBOSE = nil unless ENV['OUTPUT_WARNINGS']
+

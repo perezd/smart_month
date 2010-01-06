@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Module: SmartMonth</title>
+  <title>Class: Time</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
   <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
@@ -49,39 +49,25 @@
     <div id="classHeader">
         <table class="header-table">
         <tr class="top-aligned-row">
-          <td><strong>Module</strong></td>
-          <td class="class-name-in-header">SmartMonth</td>
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Time</td>
         </tr>
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../files/lib/smart_month/rulesets_rb.html">
-                lib/smart_month/rulesets.rb
-                </a>
-        <br />
-                <a href="../files/lib/smart_month/magic_rb.html">
-                lib/smart_month/magic.rb
-                </a>
-        <br />
-                <a href="../files/lib/smart_month/math_rb.html">
-                lib/smart_month/math.rb
-                </a>
-        <br />
-                <a href="../files/lib/smart_month/collection_rb.html">
-                lib/smart_month/collection.rb
-                </a>
-        <br />
-                <a href="../files/lib/smart_month/calculations_rb.html">
-                lib/smart_month/calculations.rb
-                </a>
-        <br />
-                <a href="../files/lib/smart_month/util_rb.html">
-                lib/smart_month/util.rb
+                <a href="../files/lib/smart_month_rb.html">
+                lib/smart_month.rb
                 </a>
         <br />
             </td>
         </tr>
 
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
         </table>
     </div>
   <!-- banner header -->
@@ -92,10 +78,23 @@
 
   <div id="contextContent">
 
+    <div id="description">
+      <p>
+inject smart_month system into the <a href="Time.html">Time</a> class.
+</p>
+
+    </div>
 
 
    </div>
 
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000002">month</a>&nbsp;&nbsp;
+      </div>
+    </div>
 
   </div>
 
@@ -104,17 +103,6 @@
 
     <div id="section">
 
-    <div id="class-list">
-      <h3 class="section-bar">Classes and Modules</h3>
-
-      Module <a href="SmartMonth/Calculations.html" class="link">SmartMonth::Calculations</a><br />
-Module <a href="SmartMonth/Collection.html" class="link">SmartMonth::Collection</a><br />
-Module <a href="SmartMonth/Magic.html" class="link">SmartMonth::Magic</a><br />
-Module <a href="SmartMonth/Math.html" class="link">SmartMonth::Math</a><br />
-Module <a href="SmartMonth/Util.html" class="link">SmartMonth::Util</a><br />
-Class <a href="SmartMonth/Rulesets.html" class="link">SmartMonth::Rulesets</a><br />
-
-    </div>
 
 
 
@@ -123,6 +111,34 @@ Class <a href="SmartMonth/Rulesets.html" class="link">SmartMonth::Rulesets</a><b
 
 
     <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">month</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+   <span class="ruby-comment cmt"># File lib/smart_month.rb, line 7</span>
+7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">month</span>
+8:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Month</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">mon</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">year</span>)
+9:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
 
 
   </div>
