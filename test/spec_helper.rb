@@ -1,6 +1,7 @@
 # quickly load smart month into the test spec
 $LOAD_PATH << File.dirname(__FILE__) + '/../'
-require 'lib/smart_month'
+require 'rubygems'
+require 'smart_month'
 
 unless ENV['MSPEC_RUNNER']
   begin
